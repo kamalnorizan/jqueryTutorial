@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effects</title>
+</head>
+<body>
+    <h1>Header 1</h1>
+    <h2>Header 2</h2>
+    <h3>Header 3</h3>
+    <h4>Header 4</h4>
+    <button id="hideH1Btn">Hide Header 1</button>
+    <button id="showH1Btn">Show Header 1</button>
+    <button id="h2Btn">Show/Hide Header 2</button>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $('#hideH1Btn').click(function (e) { 
+            e.preventDefault();
+            $('h1').hide();
+        });
+
+        $('#showH1Btn').click(function (e) { 
+            e.preventDefault();
+            $('h1').show();
+        });
+
+        $('#h2Btn').click(function (e) { 
+            e.preventDefault();
+            $('h2').toggle();
+        });
+    </script>
+</body>
+</html>
