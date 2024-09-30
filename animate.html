@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate</title>
+</head>
+
+<body>
+    <div id="blueDiv" style="background-color: blue; width: 80px; height: 100px"></div>
+    <button id="btnPlay">Play</button>
+    <button id="btnReverse">Reverse</button>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $('#btnPlay').click(function (e) {
+            $('#blueDiv').animate({
+                width: '300px',
+                height: '300px',
+            });
+        });
+
+        $('#btnReverse').click(function (e) {
+            $('#blueDiv').animate({
+                width: '80px',
+                height: '100px',
+            });
+        });
+    </script>
+</body>
+
+</html>
