@@ -11,8 +11,21 @@
     <button type="button" id="btnA">Button A</button>
     <button type="button" id="btnB">Button B</button>
 
-    <div class="mouseEnterArea" style="background-color: blue;">Mouse here</div>
+    <div class="mouseEnterArea" style="background-color: blue; color:white">Mouse here</div>
 
+    
+    <select name="mySelect" id="mySelect" class="form-control">
+        <option value="">-- Select One --</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <select name="mySelect2" id="mySelect2" class="form-control">
+        <option value="">-- Select One --</option>
+    </select>
+    
+
+    <input type="text" name="keydown" id="keydown">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -35,6 +48,20 @@
             
             $('.mouseEnterArea').mouseleave(function(e){
                 $('.mouseEnterArea').css('background-color','blue');
+            });
+            
+            $('#keydown').keyup(function(e){
+                $('.mouseEnterArea').text($('#keydown').val());
+            });
+
+            $('#mySelect').change(function (e) { 
+                e.preventDefault();
+                $('#mySelect2').empty();
+                var selected = $('#mySelect').val();
+                for(var i=0;i<selected;i++){
+                    $('#mySelect2').append('<option value="'+i+'">'+i+'</option>');
+                }
+                
             });
 
             //$('#btnA').click();
