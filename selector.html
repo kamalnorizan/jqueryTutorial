@@ -4,15 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selector</title>
+    <style>
+        table.newtable{
+            background-color: blue;
+        }
+    </style>
 </head>
 <body>
-    <table class="table" id="mytable">
+    <table class="table" id="mytableA" name="tableA">
         <tr>
-            <td></td>
+            <td class="testTd">Test</td>
+        </tr>
+        <tr>
+            <td class="testTd">Test</td>
         </tr>
     </table>
-    <input type="date" class="form-control" name="tarikh" id="tarikh">
 
-    jq
+    <input type="date" class="form-control" name="tarikh" id="tarikh">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        
+        $(document).ready(function () {
+            $(document).on("click",".testTd",function (e) { 
+                alert("Test");
+            });
+
+            $('#mytableA').append('<tr><td class="testTd">Test</td></tr>');
+            $('#mytableA').append('<tr><td class="testTd">Test</td></tr>');
+            $('#mytableA').append('<tr><td class="testTd">Test</td></tr>');
+        });
+    </script>
 </body>
 </html>

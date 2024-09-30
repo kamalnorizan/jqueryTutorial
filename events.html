@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+
+<body>
+    <button type="button" id="btnA">Button A</button>
+    <button type="button" id="btnB">Button B</button>
+
+    <div class="mouseEnterArea" style="background-color: blue;">Mouse here</div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#btnA').click(function (e) {
+                e.preventDefault();
+                alert('test');
+            });
+            
+            $('#btnB').dblclick(function (e) {
+                e.preventDefault();
+                alert('db click');
+            });
+            
+            $('.mouseEnterArea').mouseenter(function(e){
+                $('.mouseEnterArea').css('background-color','red');
+            });
+            
+            $('.mouseEnterArea').mouseleave(function(e){
+                $('.mouseEnterArea').css('background-color','blue');
+            });
+
+            //$('#btnA').click();
+        });
+    </script>
+</body>
+
+</html>
