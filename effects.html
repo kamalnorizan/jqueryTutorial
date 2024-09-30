@@ -13,6 +13,19 @@
     <button id="hideH1Btn">Hide Header 1</button>
     <button id="showH1Btn">Show Header 1</button>
     <button id="h2Btn">Show/Hide Header 2</button>
+    <button id="h3Btn">Toggle Header 3 with speed</button>
+
+    <hr>
+    <p id="fadePara">This is a paragraph. Para 1</p>
+
+
+    <button id="fadeOutParaBtn">Hide Para 1</button>
+    <button id="fadeInParaBtn">Show Para 1</button>
+    <button id="fadeToggleParaBtn">Toggle Para 1</button>
+    <button id="fadeToParaBtn">Fade Para 1 to .2</button>
+    <button id="showfadeToParaBtn">Fade Para 1 to 1</button>
+
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -30,6 +43,36 @@
         $('#h2Btn').click(function (e) { 
             e.preventDefault();
             $('h2').toggle();
+        });
+
+        $('#h3Btn').click(function (e) { 
+            e.preventDefault();
+            $('#h2Btn').click();
+            $('h3').toggle("fast");
+        });
+
+        $('#fadeOutParaBtn').click(function (e) { 
+            e.preventDefault();
+            $('#fadePara').fadeOut();
+        });
+
+        $('#fadeInParaBtn').click(function (e) { 
+            e.preventDefault();
+            $('#fadePara').fadeIn();
+        });
+
+        $('#fadeToggleParaBtn').click(function (e) { 
+            e.preventDefault();
+            $('#fadePara').fadeToggle();
+        });
+
+        $('#fadeToParaBtn').click(function (e) { 
+            e.preventDefault();
+            $('#fadePara').fadeTo("slow",0.2);
+        });
+        $('#showfadeToParaBtn').click(function (e) { 
+            e.preventDefault();
+            $('#fadePara').fadeTo("slow",1);
         });
     </script>
 </body>
