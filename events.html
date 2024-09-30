@@ -23,6 +23,21 @@
     <select name="mySelect2" id="mySelect2" class="form-control">
         <option value="">-- Select One --</option>
     </select>
+
+    <table width="100%">
+        <tr>
+            <td>
+                a
+            </td>
+            <td>b</td>
+            <td>c</td>
+        </tr>
+        <tr>
+            <td>d</td>
+            <td>e</td>
+            <td>f</td>
+        </tr>
+    </table>
     
 
     <input type="text" name="keydown" id="keydown">
@@ -50,7 +65,7 @@
                 $('.mouseEnterArea').css('background-color','blue');
             });
             
-            $('#keydown').keyup(function(e){
+            $('#keydown').change(function(e){
                 $('.mouseEnterArea').text($('#keydown').val());
             });
 
@@ -65,7 +80,22 @@
             });
 
             //$('#btnA').click();
+
+            $('td').dblclick(function (e) { 
+                e.preventDefault();
+                var text = $(this).text();
+                $(this).html('<input type="text" name="keydown" value="'+text+'" class="inputClass">');
+                $(this).find('.inputClass').focus();
+            });
+
+            $(document).on('blur','.inputClass',function(e){
+                var text = $(this).val();
+                $(this).parent().text(text);
+                alert('dah save');
+            });
         });
+
+
     </script>
 </body>
 
