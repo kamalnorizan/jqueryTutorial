@@ -25,7 +25,10 @@
     <button id="fadeToParaBtn">Fade Para 1 to .2</button>
     <button id="showfadeToParaBtn">Fade Para 1 to 1</button>
 
+    <hr>
 
+    <p id="fadePara2" style="display:none">This is a paragraph. Para 2</p>
+    <button id="toggleSlideBtn">Slide para 2</button>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -70,9 +73,22 @@
             e.preventDefault();
             $('#fadePara').fadeTo("slow",0.2);
         });
+
         $('#showfadeToParaBtn').click(function (e) { 
             e.preventDefault();
             $('#fadePara').fadeTo("slow",1);
+        });
+
+        $('#toggleSlideBtn').click(function (e) { 
+            e.preventDefault();
+            $('#fadePara2').slideToggle();
+
+            if($(this).text() == 'Slide para 2'){
+                $(this).text('Slide para 2 up');
+            }else{
+                $(this).text('Slide para 2');
+            }
+            
         });
     </script>
 </body>
