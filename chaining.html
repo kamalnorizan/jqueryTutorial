@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <p id="p1">This is a paragraph</p>
+    <p id="p1" style="display: none;">This is a paragraph</p>
     <button id="btn1" type="button" data-jantina="L" data-id="btn1">Button 1</button>
     <button id="btn2" type="button" data-jantina="L" data-id="btn2">Button 2</button>
     <button id="btn3" type="button" data-jantina="L" data-id="btn3">Button 3</button>
@@ -26,6 +26,7 @@
     <script>
 
         $('#btn1').click(function (e) { 
+            console.log($('#p1').hide());
             e.preventDefault();
             $('#p1').hide("slow", function(){
                 alert('Paragraph is hidden');
@@ -37,6 +38,32 @@
             console.log($(this).data('id'));
             console.log($(this).data('jantina'));
         });
+
+        $('#btn3').click(function (e) { 
+            e.preventDefault();
+            $('#p1').queue( function(next){
+                $('#p1').fadeIn();
+                next();
+            }).queue( function(next){
+                $('#p1').slideUp();
+                next();
+            }).queue( function(next){
+                $('#p1').slideDown();
+                next();
+            }).queue( function(next){
+                $('#p1').fadeOut();
+                next();
+            });
+        });
+        
+        $('#btn4').click(function (e) { 
+            e.preventDefault();
+            $('#p1').fadeIn().slideUp().slideDown().fadeOut().promise().done(function(){
+                alert('All animations are done');
+            }); 
+        });
+
+
 
 
     </script>
