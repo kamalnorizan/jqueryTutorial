@@ -8,17 +8,24 @@
 </head>
 
 <body>
+    <select name="state" id="state">
+    </select>
+    <select name="district" id="district">
+    </select>
+    <hr>
     <h1><span style="color: red;">DOM jQuery</span></h1>
     <p>DOM manipulation with jQuery</p>
     <input type="text" name="txtInput" id="txtInput">
     <button id="btn1">Button 1</button>
     <hr>
+    <button id="resetTable">Reset Table</button>
     <table width="100%" border="1">
         <thead>
             <tr>
                 <th>TD 1</th>
                 <th>TD 2</th>
                 <th>TD 3</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -26,44 +33,117 @@
                 <td>TD 1</td>
                 <td>TD 2</td>
                 <td>TD 3</td>
+                <td><button class="btn-remove">Delete</button></td>
             </tr>
             <tr>
                 <td>TD 1</td>
                 <td>TD 2</td>
                 <td>TD 3</td>
+                <td><button class="btn-remove">Delete</button></td>
             </tr>
             <tr>
                 <td>TD 1</td>
                 <td>TD 2</td>
                 <td>TD 3</td>
+                <td><button class="btn-remove">Delete</button></td>
             </tr>
         </tbody>
     </table>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"
+        integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $('h1').text('Assign text value to h1');
         $('h1').html('<span style="color: red;">Assign text value to h1</span>');
         $('#txtInput').val('Assign text value to h1');
-        console.log($('h1').text());
-        console.log($('h1').html());
-        console.log($('#txtInput').val());
 
-        for (let i = 0; i < 5; i++) {
-            if(i % 2 == 0){
-                $('table > tbody').append('<tr><td>i =  '+i+'</td><td>TD 5</td><td>TD 6</td></tr>');
-            }else{
-                $('table > tbody').prepend('<tr><td>i =  '+i+'</td><td>TD 5</td><td>TD 6</td></tr>');
+        generateRows();
+        getStates();
+        $('#resetTable').click(function (e) {
+            e.preventDefault();
+            $('table > tbody').empty();
+            generateRows();
+        });
 
+        $(document).on("click", ".btn-remove", function (e) {
+            e.preventDefault();
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this row!",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Yes, i'm sure!",
+                        value: true,
+                        visible: true,
+                        className: "btn-danger",
+                        closeModal: true
+                    }
+                }
+            }).then((value) => {
+
+                if (value == true) {
+                    $(this).closest('tr').remove();
+                }
+            });
+        });
+
+        function generateRows() {
+            for (let i = 0; i < 5; i++) {
+                if (i % 2 == 0) {
+                    $('table > tbody').append('<tr><td>i =  ' + i + '</td><td>TD 5</td><td>TD 6</td><td><button class="btn-remove">Delete</button></td></tr>');
+                } else {
+                    $('table > tbody').prepend('<tr><td>i =  ' + i + '</td><td>TD 5</td><td>TD 6</td><td><button class="btn-remove">Delete</button></td></tr>');
+
+                }
             }
+
+            $('table > tbody').append('<tr><td>TD 4</td><td>TD 5</td><td>TD 6</td><td><button class="btn-remove">Delete</button></td></tr>');
+            $('table > tbody').prepend('<tr><td>TD a</td><td>TD b</td><td>TD c</td><td><button class="btn-remove">Delete</button></td></tr>');
         }
 
-        $('table > tbody').append('<tr><td>TD 4</td><td>TD 5</td><td>TD 6</td></tr>');
-        $('table > tbody').prepend('<tr><td>TD a</td><td>TD b</td><td>TD c</td></tr>');
+        function getStates() {
+            $.ajax({
+                type: "get",
+                url: "https://jian.sh/malaysia-api/state/v1/all.json",
+                dataType: "json",
+                success: function (response) {
+                    $.each(response, function (indexInArray, valueOfElement) {
+                        $('#state').append('<option value="' + valueOfElement.state + '">' + valueOfElement.state + '</option>');
+                    });
+                    $('#state').change();
+                }
+            });
+        }
 
-        
+        $('#state').change(function (e) {
+            e.preventDefault();
+            $('#district').empty();
+            var state = $(this).val().toLowerCase();
+            state = state.replace(' ', '_');
+            $.ajax({
+                type: "get",
+                url: "https://jian.sh/malaysia-api/state/v1/" + state + '.json',
+                dataType: "json",
+                success: function (response) {
+
+                    $('#district').append('<option value="">-- Select One --</option>');
+                    $.each(response.administrative_districts, function (indexInArray, valueOfElement) {
+                        $('#district').append('<option value="' + valueOfElement + '">' + valueOfElement + '</option>');
+                    });
+                }
+            });
+        });
     </script>
 </body>
 
