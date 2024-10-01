@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM jQuery</title>
+</head>
+
+<body>
+    <h1><span style="color: red;">DOM jQuery</span></h1>
+    <p>DOM manipulation with jQuery</p>
+    <input type="text" name="txtInput" id="txtInput">
+    <button id="btn1">Button 1</button>
+    <hr>
+    <table width="100%" border="1">
+        <thead>
+            <tr>
+                <th>TD 1</th>
+                <th>TD 2</th>
+                <th>TD 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td>TD 3</td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td>TD 3</td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td>TD 3</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $('h1').text('Assign text value to h1');
+        $('h1').html('<span style="color: red;">Assign text value to h1</span>');
+        $('#txtInput').val('Assign text value to h1');
+        console.log($('h1').text());
+        console.log($('h1').html());
+        console.log($('#txtInput').val());
+
+        for (let i = 0; i < 5; i++) {
+            if(i % 2 == 0){
+                $('table > tbody').append('<tr><td>i =  '+i+'</td><td>TD 5</td><td>TD 6</td></tr>');
+            }else{
+                $('table > tbody').prepend('<tr><td>i =  '+i+'</td><td>TD 5</td><td>TD 6</td></tr>');
+
+            }
+        }
+
+        $('table > tbody').append('<tr><td>TD 4</td><td>TD 5</td><td>TD 6</td></tr>');
+        $('table > tbody').prepend('<tr><td>TD a</td><td>TD b</td><td>TD c</td></tr>');
+
+        
+    </script>
+</body>
+
+</html>
