@@ -46,6 +46,69 @@
 
 <body>
     <div class="container">
+        <table border="1">
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+            <tr>
+                <td>TD 1</td>
+                <td>TD 2</td>
+                <td><button class="del">Delete</button></td>
+            </tr>
+        </table>
+
         <div id="detailBox">
 
         </div>
@@ -65,18 +128,26 @@
         </div>
     </div>
 
+    
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script>
-        $('.box').mouseenter(function (e) {
+        $('.del').click(function (e) { 
+            e.preventDefault();
+            $(this).closest('td').remove();
+        });
+        
+
+        $('.box, #detailBox').mouseenter(function (e) {
             $(this).animate({
                 width: '150px',
                 height: '150px'
             });
         });
 
-        $('.box').mouseleave(function (e) {
+        $('.box, #detailBox').mouseleave(function (e) {
             $(this).animate({
                 width: '80px',
                 height: '80px'
@@ -86,7 +157,7 @@
         $('.box').click(function (e) {
             $('#detailBox').text($(this).text());
         });
-        
+
     </script>
 </body>
 

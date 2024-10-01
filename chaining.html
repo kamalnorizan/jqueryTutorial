@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaining</title>
+</head>
+
+<body>
+    <p id="p1">This is a paragraph</p>
+    <button id="btn1" type="button" data-jantina="L" data-id="btn1">Button 1</button>
+    <button id="btn2" type="button" data-jantina="L" data-id="btn2">Button 2</button>
+    <button id="btn3" type="button" data-jantina="L" data-id="btn3">Button 3</button>
+    <button id="btn4" type="button" data-jantina="P" data-id="btn4">Button 4</button>
+    <button id="btn5" type="button" data-jantina="L" data-id="btn5">Button 5</button>
+    <button id="btn6" type="button" data-jantina="P" data-id="btn6">Button 6</button>
+    <button id="btn7" type="button" data-jantina="L" data-id="btn7">Button 7</button>
+    <button id="btn8" type="button" data-jantina="P" data-id="btn8">Button 8</button>
+    <button id="btn9" type="button" data-jantina="L" data-id="btn9">Button 9</button>
+    <button id="btn10" type="button" data-jantina="P" data-id="btn10">Button 10</button>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+
+        $('#btn1').click(function (e) { 
+            e.preventDefault();
+            $('#p1').hide("slow", function(){
+                alert('Paragraph is hidden');
+            });
+        });
+
+        $('#btn2').click(function (e) { 
+            e.preventDefault();
+            console.log($(this).data('id'));
+            console.log($(this).data('jantina'));
+        });
+
+
+    </script>
+</body>
+
+</html>
